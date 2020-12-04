@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>STORY</title>
+	<link rel="icon" type="image/png" href="favicon/favicon.png" />
+
+	<link rel="stylesheet" type="text/css" href="font/stylesheet.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	<script src="js/prefixfree.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		/*사이드 바 색상 변경*/
+		::-webkit-scrollbar{width: 16px;}
+		::-webkit-scrollbar-track {background-color:#FFFFFF;}
+		::-webkit-scrollbar-thumb {background-color:#222222;}
+		::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment
+		{width:16px;height:16px;background:#222222;}
+		/*사이드 바 색상 변경 끝*/
+
+		html{
+			/*scroll-behavior: smooth;*/
+			/*자연스러운 전환 효과*/
+  		}
+
+  		html body{
+  			width: 100%;
+  			height: 100%;
+  			position: absolute;
+  			z-index: -99;
+  		}
+
+		/*배경*/
+		#wrapper{
+			width: 11520px;
+			height: 100%;
+			position: relative;
+			z-index: -1;
+		}
+
+		#wrapper>section{
+			width: 1920px;
+			height: 100%;
+			right: 0;
+			float: left;
+			box-sizing: border-box;
+			overflow: hidden;
+			/*border: 1px solid red;*/
+		}
+
+		/*배경*/
+		.bg{
+			width: 100%;
+			height: 100%;
+			background: url(bg_img/bg_01.png) no-repeat center;
+			background-size: cover;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -9999;
+			/*border: 1px solid red;*/
+		}
+		/*배경 끝*/
+
+		/*버튼 공통*/
+		.button_a{
+			width: 193px;
+			height: 50px;
+			position: absolute;
+			background: #222;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		.button_text{
+			color: #fff;
+			font-size: 20px;
+			text-align: center;
+			font-family: Arita-dotum-SemiBold;
+			position: absolute;
+			top: 57%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+		}
+
+		.button_hover>a:hover{
+			transition: 0.3s;
+			background: #0033A0;
+			border-radius: 10px 10px;
+		}
+		/*버튼 공통 끝*/
+
+		/*토글버튼*/
+		.toggle{
+			width: 60px;
+			height: 60px;
+			position: fixed;
+			background: #222;
+			top: 0;
+			left: 0;
+			z-index: 9999;
+			transition: 0.3s;
+		}
+
+		.toggle:hover{
+			background: #0033a0;
+			transition: 0.3s;
+		}
+
+		.toggle_a{
+			width: 60px;
+			height: 60px;
+			position: absolute;
+			background: #222;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		.fa-home{
+			color: #fff;
+			font-size: 24px;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			left: 49%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+		}
+
+		.toggle_hover>a:hover{
+			transition: 0.3s;
+			background: #0033A0;
+			border-radius: 10px 10px;
+		}
+		/*토글버튼 끝*/
+
+		/*텍스트 폰트 및 사이즈*/
+		.story_m_text{
+			font-family: Arita-dotum-SemiBold;
+			font-size: 72px;
+			color: #222;
+		}
+
+		.story_s_text{
+			font-family: Arita-buri-Medium;
+			font-size: 24px;
+			color: #222;
+		}
+
+		.story_m{
+			font-family: Arita-dotum-SemiBold;
+			font-size: 48px;
+			color: #222;
+		}
+
+		.story_sm{
+			font-family: Arita-dotum-SemiBold;
+			font-size: 30px;
+			color: #222;
+		}
+
+		.story_s{
+			font-family: Arita-buri-Medium;
+			font-size: 18px;
+			color: #222;
+		}
+		/*텍스트 폰트 및 사이즈 끝*/
+
+		/*page_1 시작*/
+		#page_1>.logo{
+			width: 193px;
+			height: 72px;
+			position: absolute;
+			background: url(logo/logo_b.png);
+			top: 220px;
+			left: 855px;
+		}
+
+		#page_1>.button{
+			width: 193px;
+			height: 50px;
+			background: #222;
+			top: 660px;
+			left: 855px;
+			position: absolute;
+			border-radius: 10px 10px;
+			z-index: 100;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		#page_1>.text_01{
+			top: 410px;
+			margin-left: 590px;
+			position: absolute;
+		}
+
+		#page_1>.text_02{
+			top: 535px;
+			margin-left: 590px;
+			position: absolute;
+			text-align: center;
+		}
+		/*page_1 끝*/
+
+		/*page_2 시작*/
+		#page_2>.img_1{
+			width: 600px;
+			height: 750px;
+			background: url(bg_img/story/001.png);
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+			top: 100px;
+			margin-left: 111px;
+			position: absolute;
+			text-align: center;
+		}
+
+		#page_2>.text_03{
+			top: 137px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_04{
+			top: 357px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_05{
+			top: 515px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_06{
+			top: 678px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_07{
+			top: 200px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_08{
+			top: 407px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_09{
+			top: 564px;
+			margin-left: 800px;
+			position: absolute;
+		}
+
+		#page_2>.text_10{
+			top: 725px;
+			margin-left: 800px;
+			position: absolute;
+		}
+		/*page_2 끝*/
+
+		/*page_3 시작*/
+		#page_3>.text_11{
+			top: 410px;
+			margin-left: 620px;
+			text-align: center;
+			position: absolute;
+		}
+
+		#page_3>.text_12{
+			top: 542px;
+			margin-left: 395px;
+			text-align: center;
+			position: absolute;
+		}
+		/*page_3 끝*/
+
+		/*page_4 시작*/
+		#page_4>.img_2{
+			width: 500px;
+			height: 350px;
+			background: url(bg_img/story/002.png);
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+			top: 172px;
+			margin-left: 116px;
+			position: absolute;
+		}
+		#page_4>.img_3{
+			width: 500px;
+			height: 350px;
+			background: url(bg_img/story/003.png);
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+			top: 172px;
+			margin-left: 701px;
+			position: absolute;
+		}
+		#page_4>.img_4{
+			width: 500px;
+			height: 350px;
+			background: url(bg_img/story/004.png);
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+			top: 172px;
+			margin-left: 1286px;
+			position: absolute;
+		}
+
+		#page_4>.text_13{
+			top: 550px;
+			margin-left: 116px;
+			text-align: center;
+			position: absolute;
+		}
+
+		#page_4>.text_14{
+			top: 550px;
+			margin-left: 701px;
+			text-align: center;
+			position: absolute;
+		}
+
+		#page_4>.text_15{
+			top: 550px;
+			margin-left: 1286px;
+			text-align: center;
+			position: absolute;
+		}
+
+		#page_4>.text_16{
+			width: 480px;
+			top: 600px;
+			margin-left: 116px;
+			position: absolute;
+		}
+
+		#page_4>.text_17{
+			width: 480px;
+			top: 600px;
+			margin-left: 701px;
+			position: absolute;
+		}
+
+		#page_4>.text_18{
+			width: 480px;
+			top: 600px;
+			margin-left: 1286px;
+			position: absolute;
+		}
+		/*page_4 끝*/
+
+		/*page_5 시작*/
+		#page_5>.youtube{
+			position: absolute;
+			top: 105px;
+			margin-left: 321.5px;
+			z-index: 2222;
+		}
+
+		#page_5>.nana{
+			width: 1280px;
+			height: 730px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+			position: absolute;
+			top: 100px;
+			margin-left: 316.5px;
+		}
+		/*page_5 끝*/
+
+		/*page_6 시작*/
+		#page_6>.img_5{
+			width: 600px;
+			height: 550px;
+			background: url(bg_img/story/005.png);
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+			top: 220px;
+			right: 0;
+			position: absolute;
+		}
+
+		#page_6>.text_19{
+			top: 302px;
+			margin-left: 100px;
+			position: absolute;
+		}
+
+		#page_6>.text_20{
+			top: 519px;
+			margin-left: 100px;
+			position: absolute;
+		}
+
+		#page_6>.text_21{
+			top: 366px;
+			margin-left: 100px;
+			position: absolute;
+		}
+
+		#page_6>.text_22{
+			top: 573px;
+			margin-left: 100px;
+			position: absolute;
+		}
+		/*page_6 끝*/
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+
+	<span class="toggle toggle_hover">
+		<a class="toggle_a" href="index.html">
+			<i class="fa fa-home" aria-hidden="true"></i>
+		</a>
+	</span>
+
+	<!-- page_1 시작 -->
+	<section id="page_1">
+		<span class="logo"></span>
+
+		<p class="story_m_text text_01">“단 하나의 원천 스토리”</p>
+
+		<p class="story_s_text text_02">
+		우리는 파종부터 병에 담는 마지막 순간의 전체 과정에 책임이 있습니다.
+		<br>
+		이는 더 나은 세상과 더 나은 보드카를 위한 것입니다.
+		</p>
+
+		<span class="button button_hover">
+			<a class="button_a" href="#page_2">
+				<p class="button_text">START</p>
+			</a>
+		</span>
+	</section>
+	<!-- page_1 끝 -->
+
+	<section id="page_2">
+		<span class="img_1"></span>
+		<p class="story_m text_03">단 하나의 원천</p>
+
+		<p class="story_sm text_04">이산화탄소 중성 증류</p>
+		<p class="story_sm text_05">겨울 밀</p>
+		<p class="story_sm text_06">청정수</p>
+
+		<p class="story_s text_07">
+			단 하나의 원천은 우리 생산의 철학입니다. 이는 스웨덴 남부의 작은 마을 아후스에서 시작되는 생산의 여정에 관한 모든 것을 의미합니다.
+			<br>
+			Absolut Vodka의 모든 구성성분은 스웨덴 남부에서 공급됩니다. 
+			<br>
+			모든 물 한 방울, 모든 밀은 단 하나의 청정수 지역, 단 하나의 마을, 단 하나의 커뮤니티에서 가져온 것입니다. 
+			<br>
+			이를 우리는 단 하나의 원천이라 부릅니다.
+			<br>
+			이를 통해서 앱솔루트는 언제나 동일한 높은 품질을 세상 모든 고객에게 제공합니다.
+		</p>
+		<p class="story_s text_08">
+			우리는 끊임없이 개선하고 더욱 지속 가능한 방법에 집중하여 세상에서 가장 에너지 효율이 높은 증류소* 중 하나가 되었습니다.
+			<br>
+			현재 이산화탄소 중성 증류를 보유하고 있으며, 우리는 이에 대해 자부심을 갖고 있습니다.
+			<br>
+			*2016 BIER 워터 및 에너지 사용 벤치마킹 보고서
+		</p>
+		<p class="story_s text_09">
+			우리는 스웨덴 남부의 아후스 주변에서 자란 단단한 겨울 밀만 사용합니다.
+			<br>
+			스웨덴 남부는 밀이 자라기에 이상적인 토지로, 세계 평균 수확량보다 2배 이상 높은 밀을 수확하고 있습니다.
+			<br>
+			이 토지는 우리가 공급할 수 있는 가장 일관성 있는 품질을 유지하게 합니다.
+		</p>
+		<p class="story_s text_10">
+			보드카의 60%는 당연히 순수한 물이며 가장 중요한 사항입니다.
+			<br> 
+			그래서 우리 지역에 있는 40미터 이상의 깊이에서 물을 가져옵니다.
+			<br>
+			이 물은 수천 년 동안 존재한 스위스 기반암을 거쳐 정수되고 있습니다.
+			<br> 
+			이 순수함으로 최소의 처리과정이 가능해집니다.
+			<br>
+			연구실에서는 만들 수 없는 자연의 입맛을 경험할 수 있습니다.
+		</p>
+	</section>
+
+	<section id="page_3">
+		<p class="story_m_text text_11">“단 하나의 커뮤니티”</p>
+		<span class=""></span>
+		<p class="story_s_text text_12">
+			우리는 100년 이상 아후스에서 보드카를 생산하고 있습니다.
+			<br>
+			누구도 흉내낼 수 없는 보드카를 창조하기 위해서는 서로 함께 나누는 공유 가치가 필요합니다.
+			<br>
+			이를 위해서 농부와 증류 전문가들 사이에서 세대를 거듭하며 내려온 전통과 지식에 대한 믿음이 있어야 합니다.
+		</p>
+	</section>
+
+	<section id="page_4">
+		<span class="img_2"></span>
+		<span class="img_3"></span>
+		<span class="img_4"></span>
+
+		<p class="story_sm text_13">이산화탄소 중성 증류</p>
+		<p class="story_sm text_14">우리는 모든 것을 재활용합니다.</p>
+		<p class="story_sm text_15">유리병</p>
+
+		<p class="story_s text_16">
+			스웨덴 스코네 지역의 약 339개 농가로 이루어진 우리의 커뮤니티는 겨울 밀을 심고 경작하며 수확합니다.
+			<br>
+			우리는 그들을 토르길, 구드룬, 헨릭과 같은 이름으로 알고 지냅니다. 
+			품질과 지속 가능성의 측면에서 공유 가치를 나누며 우리는 지속 가능한 농업 기술을 촉진하고 최고 품질의 밀을 보장하며 또한 커뮤니티에 미치는 우리의 영향력도 개선하려고 노력합니다.
+			<br>
+			이를 하는 이유는 유행에 편승하는 것이 아닌 바로 우리의 전문 영역이기 때문입니다.
+			<br>
+			이것이 늘 우리가 수행하는 방식입니다.
+		</p>
+		<p class="story_s text_17">
+			하나라도 낭비하는 것을 원치 않습니다. 초기 단계의 증류에서 스웨덴어로 찌꺼기라고 부르는 부산물을 얻습니다.
+			<br>
+			이 부산물은 단백질이 풍부하여 주변에서 키우는 29만 마리의 돼지와 소에게 먹이로 제공합니다.
+			<br>
+			이 공급은 하루도 빠짐없이 이루어집니다.
+		</p>
+		<p class="story_s text_18">
+			다른 원료들과 마찬가지로 유리병도 리마리드에 있는 유리 공장인 우리 커뮤니티에서 제작합니다.
+			<br>
+			Absolut Vodka의 빈 병들은 매 3시간마다 보틀링 공장에 배달되어 내용물 주입을 위해 정확한 시간에 도착합니다.
+			<br>
+			오늘날 이 병들은 40% 이상이 재활용된 청결한 유리로 이루어집니다.
+		</p>
+	</section>
+
+	<section id="page_5">
+		<span class="nana"></span>
+		<span class="youtube">
+			<iframe width="1270" height="720" src="https://www.youtube.com/embed/luCUGinhQio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</span>
+	</section>
+
+	<section id="page_6">
+		<span class="img_5"></span>
+
+		<p class="story_m text_19">단 하나의 최상의 보드카</p>
+
+		<p class="story_sm text_20">복잡한 과정</p>
+
+		<p class="story_s text_21">
+			스웨덴 전통의 보드카 제조에서 태어난 성스러운 여정이자 우리가 가진 원천과 커뮤니티에 대한 헌신으로 세계 최상의 보드카가 탄생합니다.
+			<br> 
+			단 하나의 원천과 단 하나의 커뮤니티를 가진다는 것은 파종부터 병에 담는 마지막 순간의 전체 과정을 신중하게 관리한다는 의미입니다.
+			<br> 
+			여러분이 손에 들고 있는 병 하나는 모든 농부의 손길로 연결되어 있습니다.
+		</p>
+		<p class="story_s text_22">
+			우리의 인재들이 증류와 생산 과정을 구축하며 관리하는 것은 전체적인 보드카의 맛과 향에 영향을 미칩니다.
+			<br>
+			우리가 직접 증류소를 설계하고 관리한다는 사실은 세계에서 가장 에너지 효율적인 증류소 중 하나임을 의미합니다.
+			<br>
+			발효 과정에서 사용하고 있는 이스트 역시 우리 자체의 효모 균주입니다.
+			<br>
+			마치 각각의 지문이 세상에 단 하나뿐인 것처럼 효모 균주도 보드카에 고유한 향의 프로필을 선사합니다.
+			<br>
+			증류와 수백 번의 조정 과정을 거쳐서 세계 모든 사람들이 인정하는 독특한 개성의 최종 제품이 탄생합니다.
+		</p>
+	</section>
+
+	<section class="bg"></section>
+	</div>
+
+	<!-- 마우스휠에 반응하여 스르륵 이동 -->
+	<script type="text/javascript">
+		$("#wrapper").on("mousewheel",function(event, delta){
+			var left = $(window).scrollLeft();
+			var ks_cha = $("#ks_cha")
+		if(delta>0){
+			// 마우스휠을 올렸을 때 실행구문
+			var prev = left-150;
+			$("html,body").stop().animate({"scrollLeft":prev},0,"linear");
+			ks_cha.css("transform","rotateY(180deg)");	
+
+		}else if(delta<0){
+			// 마우스휠을 내렸을 때 실행구문
+			var next = left+150;
+			$("html,body").stop().animate({"scrollLeft":next},0,"linear");
+			ks_cha.css("transform","rotateY(0deg)");	
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>COCKTAIL</title>
+	<link rel="icon" type="image/png" href="favicon/favicon.png" />
+
+	<link rel="stylesheet" type="text/css" href="font/stylesheet.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	<script src="js/prefixfree.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+
+	<style>
+		/*사이드 바 색상 변경*/
+		::-webkit-scrollbar{width: 16px;}
+		::-webkit-scrollbar-track {background-color:#FFFFFF;}
+		::-webkit-scrollbar-thumb {background-color:#222222;}
+		::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment
+		{width:16px;height:16px;background:#222222;}
+		/*사이드 바 색상 변경 끝*/
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		html{
+			/*scroll-behavior: smooth;*/
+			/*자연스러운 전환 효과*/
+  		}
+
+  		html body{
+  			width: 100%;
+  			height: 100%;
+  			position: absolute;
+  			z-index: -99;
+  		}
+
+		/*배경*/
+		#wrapper{
+			width: 9600px;
+			height: 100%;
+			position: relative;
+			z-index: -1;
+		}
+
+		#wrapper>section{
+			width: 1920px;
+			height: 100%;
+			right: 0;
+			float: left;
+			box-sizing: border-box;
+			overflow: hidden;
+			/*border: 1px solid red;*/
+		}
+
+		/*버튼 공통*/
+		.button_a{
+			width: 193px;
+			height: 50px;
+			position: absolute;
+			background: #222;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		.button_text{
+			color: #fff;
+			font-size: 20px;
+			text-align: center;
+			font-family: Arita-dotum-SemiBold;
+			position: absolute;
+			top: 57%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+		}
+
+		.button_hover>a:hover{
+			transition: 0.3s;
+			background: #0033A0;
+			border-radius: 10px 10px;
+		}
+		/*버튼 공통 끝*/
+
+		/*배경*/
+		.bg{
+			width: 100%;
+			height: 100%;
+			background: url(bg_img/bg_01.png) no-repeat center;
+			background-size: cover;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -9999;
+			/*border: 1px solid red;*/
+		}
+		/*배경 끝*/
+
+		/*토글버튼*/
+		.toggle{
+			width: 60px;
+			height: 60px;
+			position: fixed;
+			background: #222;
+			top: 0;
+			left: 0;
+			z-index: 9999;
+			transition: 0.3s;
+		}
+
+		.toggle:hover{
+			background: #0033a0;
+			transition: 0.3s;
+		}
+
+		.toggle_a{
+			width: 60px;
+			height: 60px;
+			position: absolute;
+			background: #222;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		.fa-home{
+			color: #fff;
+			font-size: 24px;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			left: 49%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+		}
+
+		.toggle_hover>a:hover{
+			transition: 0.3s;
+			background: #0033A0;
+			border-radius: 10px 10px;
+		}
+		/*토글버튼 끝*/
+
+		/*page_1시작*/
+		/*#page_1{
+			width: 100%;
+			height: 100%;
+			background: #fff;
+		}*/
+
+		#page_1>.logo{
+			width: 193px;
+			height: 72px;
+			position: absolute;
+			background: url(logo/logo_b.png);
+			top: 220px;
+			left: 855px;
+		}
+
+		#page_1>.cocktail_text{
+			font-family: Kasih_Putih;
+			font-size: 150px;
+			color: #222;
+			top: 370px;
+			left: 590px;
+			position: absolute;
+			/*border: 1px solid red;*/
+		}
+
+		#page_1>.button_1{
+			width: 193px;
+			height: 50px;
+			background: #222;
+			top: 660px;
+			left: 855px;
+			position: absolute;
+			border-radius: 10px 10px;
+			z-index: 100;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+		/*page_1끝*/
+
+		/*page_2시작*/
+		#page_2>.canvas_01{
+			width: 720px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/001.png);
+			top: 147.5px;
+			margin-left: 230px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_2>.canvas_01>p{
+			font-family: Kasih_Putih;
+			font-size: 100px;
+			color: #0ECBF2;
+			top: 50%;
+			left: 30%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+
+		#page_2>.canvas_02{
+			width: 720px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/002.png);
+			bottom: 147.5px;
+			margin-left: 1000px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_2>.canvas_02>p{
+			font-family: Kasih_Putih;
+			font-size: 100px;
+			color: #DC2348;
+			top: 50%;
+			left: 15%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+
+		#page_2>.button_2{
+			width: 193px;
+			height: 50px;
+			background: #222;
+			top: 567.5013px;
+			margin-left: 230px;
+			position: absolute;
+			border-radius: 10px 10px;
+			z-index: 100;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		#page_2>.button_3{
+			width: 193px;
+			height: 50px;
+			background: #222;
+			bottom: 567.5013px;
+			margin-left: 1000px;
+			position: absolute;
+			border-radius: 10px 10px;
+			z-index: 100;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+		/*page_2끝*/
+
+		/*page_3시작*/
+		#page_3>p{
+			font-family: Kasih_Putih;
+			font-size: 120px;
+			color: #222;
+			top: 150px;
+			margin-left: 110px;
+			position: absolute;
+		}
+
+		#page_3>.canvas_03{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/003.png);
+			bottom: 147.5px;
+			margin-left: 110px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_3>.canvas_04{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/004.png);
+			bottom: 147.5px;
+			margin-left: 400px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_3>.canvas_05{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/005.png);
+			bottom: 147.5px;
+			margin-left: 690px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_3>.canvas_06{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/006.png);
+			bottom: 147.5px;
+			margin-left: 980px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_3>.canvas_07{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/007.png);
+			bottom: 147.5px;
+			margin-left: 1270px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_3>.canvas_08{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/008.png);
+			bottom: 147.5px;
+			margin-left: 1560px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+		/*page_3끝*/
+
+		/*page_4시작*/
+		#page_4>p{
+			font-family: Kasih_Putih;
+			font-size: 120px;
+			color: #222;
+			top: 400px;
+			margin-left: 110px;
+			position: absolute;
+		}
+
+		#page_4>.canvas_09>.button_4{
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+
+		#page_4>.canvas_10>.button_5{
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+
+		#page_4>.canvas_11>.button_6{
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+
+		#page_4>.canvas_12>.button_7{
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+
+		#page_4>.canvas_09{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/009.png);
+			top: 147.5px;
+			margin-left: 690px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_4>.canvas_10{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/010.png);
+			bottom: 147.5px;
+			margin-left: 980px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_4>.canvas_11{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/011.png);
+			top: 147.5px;
+			margin-left: 1270px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_4>.canvas_12{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: url(bg_img/cocktail/012.png);
+			bottom: 147.5px;
+			margin-left: 1560px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		/*#page_4>.modal_1{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: #0033a0;
+			top: 147.5px;
+			margin-left: 690px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_4>.modal_2{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: #0033a0;
+			bottom: 147.5px;
+			margin-left: 980px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_4>.modal_3{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: #0033a0;
+			top: 147.5px;
+			margin-left: 1270px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+
+		#page_4>.modal_4{
+			width: 250px;
+			height: 400px;
+			position: absolute;
+			background: #0033a0;
+			bottom: 147.5px;
+			margin-left: 1560px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}*/
+		/*page_4끝*/
+
+		/*page_5시작*/
+		#page_5>.youtube{
+			width: 1205.0282px;
+			height: 680px;
+			background: #222;
+			position: absolute;
+			top: 147px;
+			margin-left: 380px;
+			box-shadow: 0px 10px 5px #767676;
+			border: 5px solid #222;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<!-- page_1 시작 -->
+	<div id="wrapper">
+		<span class="toggle toggle_hover">
+			<a class="toggle_a" href="index.html">
+				<i class="fa fa-home" aria-hidden="true"></i>
+			</a>
+		</span>
+
+		<section id="page_1">
+			<span class="logo"></span>
+
+			<p class="cocktail_text">Let’s mix things up!</p>
+
+			<span class="button_1 button_hover">
+				<a class="button_a" href="#page_2">
+					<p class="button_text">START</p>
+				</a>
+			</span>
+		</section>
+		<!-- page_1 끝 -->
+
+		<!-- page_2 시작 -->
+		<section id="page_2">
+			<span class="canvas_01">
+				<p>Best Cocktail</p>
+			</span>
+
+			<span class="canvas_02">
+				<p>Event</p>
+			</span>
+
+			<!-- <span class="button_2 button_hover">
+				<a class="button_a" href="#A">
+					<p class="button_text">더보기</p>
+				</a>
+			</span>
+
+			<span class="button_3 button_hover">
+				<a class="button_a" href="#A">
+					<p class="button_text">더보기</p>
+				</a>
+			</span> -->
+		</section>
+		<!-- page_2 끝 -->
+
+		<!-- page_3 시작 -->
+		<section id="page_3">
+			<p>Best Mix Material</p>
+
+			<span class="canvas_03"></span>
+			<span class="canvas_04"></span>
+			<span class="canvas_05"></span>
+			<span class="canvas_06"></span>
+			<span class="canvas_07"></span>
+			<span class="canvas_08"></span>
+		</section>
+		<!-- page_3 끝 -->
+
+		<!-- page_4 시작 -->
+		<section id="page_4">
+			<p>Cocktail Recipe</p>
+
+			<span class="canvas_09">
+				<span class="button_4 button_hover">
+					<a class="button_a" href="https://www.absolutdrinks.com/ko/drinks/the-thanksgiving-punch/">
+						<p class="button_text">더보기</p>
+					</a>
+				</span>
+			</span>
+
+			<span class="canvas_10">
+				<span class="button_5 button_hover">
+					<a class="button_a" href="https://www.absolutdrinks.com/ko/drinks/pink-tonic/">
+						<p class="button_text">더보기</p>
+					</a>
+				</span>
+			</span>
+
+			<span class="canvas_11">
+				<span class="button_6 button_hover">
+					<a class="button_a" href="https://www.absolutdrinks.com/ko/drinks/black-tonic/">
+						<p class="button_text">더보기</p>
+					</a>
+				</span>
+			</span>
+
+			<span class="canvas_12">
+				<span class="button_7 button_hover">
+					<a class="button_a" href="https://www.absolutdrinks.com/ko/drinks/black-russian-100/">
+						<p class="button_text">더보기</p>
+					</a>
+				</span>
+			</span>
+
+			<!-- <div class="modal_1"></div>
+			<div class="modal_2"></div>
+			<div class="modal_3"></div>
+			<div class="modal_4"></div> -->
+		</section>
+
+		<script type="text/javascript">
+			$(function(){
+				var
+			})
+		</script>
+		<!-- page_4 끝 -->
+
+		<!-- page_5 시작 -->
+		<section id="page_5">
+			<span class="youtube">
+				<iframe width="1195.1012" height="670.073" src="https://www.youtube.com/embed/IfvZMwaJjOg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</span>
+		</section>
+		<!-- page_5 끝 -->
+
+		<!-- 배경 시작 -->
+		<section class="bg"></section>
+		<!-- 배경 끝 -->
+		</div>
+
+			<!-- 마우스휠에 반응하여 스르륵 이동 -->
+		<script type="text/javascript">
+			$("#wrapper").on("mousewheel",function(event, delta){
+				var left = $(window).scrollLeft();
+				var ks_cha = $("#ks_cha")
+			if(delta>0){
+				// 마우스휠을 올렸을 때 실행구문
+				var prev = left-150;
+				$("html,body").stop().animate({"scrollLeft":prev},0,"linear");
+				ks_cha.css("transform","rotateY(180deg)");	
+	
+			}else if(delta<0){
+				// 마우스휠을 내렸을 때 실행구문
+				var next = left+150;
+				$("html,body").stop().animate({"scrollLeft":next},0,"linear");
+				ks_cha.css("transform","rotateY(0deg)");	
+				}
+			})
+		</script>
+</body>
+</html>

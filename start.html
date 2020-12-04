@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ABSOLUT</title>
+	<link rel="icon" type="image/png" href="favicon/favicon.png" />
+
+	<link rel="stylesheet" type="text/css" href="font/stylesheet.css">
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.bg{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			background: url(bg_img/bg_01.png) no-repeat center;
+			background-size: cover;
+			z-index: -9999;
+		}
+
+		.logo{
+			width: 193px;
+			height: 72px;
+			position: absolute;
+			background: url(logo/logo_b.png);
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/*border: 1px solid red;*/
+		}
+
+		.text{
+			width: 100%;
+			text-align: center;
+			font-family: Arita-buri-Medium;
+			font-size: 60px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/*border: 1px solid red;*/
+		}
+
+		.btn{
+			width: 193px;
+			height: 50px;
+			background: #222;
+			position: absolute;
+			border-radius: 10px 10px;
+			top: 67%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: 0.3s;
+		}
+
+		.btn>a{
+			width: 193px;
+			height: 50px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+			transition: 0.3s;
+			/*border: 1px solid red;*/
+		}
+
+		.btn>a>p{
+			color: #fff;
+			font-size: 20px;
+			text-align: center;
+			font-family: Arita-dotum-SemiBold;
+			position: absolute;
+			top: 55%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 10px 10px;
+		}
+
+		.btn>a:hover{
+			transition: 0.3s;
+			background: #0033A0;
+			border-radius: 10px 10px;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<span class="logo"></span>
+		<span class="text">
+			<p>
+				Never different
+				<br>
+				but always changing
+			</p>
+		</span>
+		<span class="btn">
+			<a href="index.html">
+				<p>START</p>
+			</a>
+		</span>
+
+		<span class="bg"></span>
+	</section>
+</body>
+</html>

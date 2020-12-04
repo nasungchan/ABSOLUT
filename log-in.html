@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "hind",sans-serif;
+        text-decoration: none;
+      }
+
+      body{
+        background: #121212;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-form{
+        width: 470px;
+        background: #222222;
+        padding: 30px 60px;
+        /*border: 1px solid red;*/
+      }
+
+      .toggle{
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin-left: 370px;
+        margin-top: -30px;
+        background: #2B2B2B;
+        transition: 0.3s;
+        /*border: 1px solid red;*/
+      }
+
+      .toggle:hover{
+        background: #0033A0;
+        transition: 0.3s;
+      }
+
+      .toggle:before{
+      content: '\f00d';
+      font-family: fontAwesome;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      line-height: 40px;
+      text-align: center;
+      font-size: 24px;
+      color: #f4f4f4;
+      }
+      
+      .logo{
+        height: 80px;
+        text-align: center;
+        /*border: 1px solid red;*/
+      }
+      
+      .logo img{
+        width: 134px;
+        height: 50px;
+        /*border: 1px solid red;*/
+      }
+
+      .login-form h6{
+        color: #f1f1f1;
+        font-size: 15px;
+        /*text-transform: uppercase;*/
+        font-weight: 500;
+      }
+      
+      .textbox{
+        width: 100%;
+        height: 50px;
+        position: relative;
+        margin-top: 15px;
+      }
+      
+      .textbox input{
+        width: 100%;
+        height: 50px;
+        border: none;
+        background: #2b2b2b;
+        padding: 0 15px;
+        font-size: 16px;
+        outline: none;
+        color: #f4f4f4;
+        /*border: 1px solid red;*/
+      }
+      
+      .textbox input:focus{
+        background: #484848 !important;
+      }
+      
+      .check-message{
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        color: #fff;
+        /*text-transform: uppercase;*/
+        transform: translateY(-50%);
+      }
+      
+      .textbox input:focus + .check-message{
+        display: none;
+      }
+      
+      .options{
+        margin-top: 15px;
+        color: #f4f4f480;
+        overflow: hidden;
+        font-size: 14px;
+      }
+      
+      .remember-me{
+        float: left;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+      
+      .checkbox{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: #484848;
+        margin-right: 15px;
+        position: relative;
+      }
+      
+      .checkbox input{
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+      
+      .checked{
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        width: 5px;
+        height: 10px;
+        border: solid #fff;
+        border-width: 0 1px 1px 0;
+        transform: rotate(45deg);
+        display: none;
+      }
+      
+      .checkbox input:checked + .checked{
+        display: block;
+      }
+      
+      .options a{
+        color: #f4f4f480;
+        font-size: 14px;
+        float: right;
+      }
+      
+      .login-btn{
+        width: 100%;
+        height: 50px;
+        margin-top: 30px;
+        background: #FFFFFF;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        /*text-transform: uppercase;*/
+        font-weight: 700;
+        transition: .3s linear;
+        /*border: 1px solid red;*/
+      }
+      
+      .login-btn.active{
+        background: #0033A0;
+        color: #fff;
+      }
+      
+      .login-btn.active:hover{
+        opacity: .7;
+      }
+      
+      .hidden{
+        display: none;
+      }
+      
+      .privacy-link{
+        text-align: center;
+        margin-top: 35px;
+      }
+      
+      .privacy-link a{
+        color: #f1f1f1;
+        font-size: 14px;
+      }
+      
+      .dont-have-account{
+        font-size: 14px;
+        text-align: center;
+        color: #f4f4f480;
+        margin: 20px 0;
+      }
+      
+      .dont-have-account a{
+        color: #f1f1f1;
+      }
+      
+      @media screen and (max-width:470px) {
+        body{
+          background: #202020;
+        }
+      
+        .login-form{
+          width: 100%;
+          padding: 0 15px;
+        }
+      }
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="login-form">
+      <a href="index.html">
+        <div class="toggle"></div>
+      </a>
+
+      <div class="logo"><img src="logo/logo.png" alt=""></div>
+
+      <h6>Sign In</h6>
+
+      <form action="">
+        <div class="textbox">
+          <input type="text" placeholder="Username Or Email">
+          <span class="check-message hidden">Error</span>
+        </div>
+
+        <div class="textbox">
+          <input type="password" placeholder="Password">
+          <span class="check-message hidden">Error</span>
+        </div>
+
+        <div class="options">
+          <label class="remember-me">
+            <span class="checkbox">
+              <input type="checkbox">
+              <span class="checked"></span>
+            </span>
+            Remember me
+          </label>
+
+          <a href="#">Forgot Your Password</a>
+        </div>
+
+        <input type="submit" value="Log In Now" class="login-btn" disabled>
+        <div class="privacy-link">
+          <a href="#">Privacy Policy</a>
+        </div>
+      </form>
+
+      <div class="dont-have-account">
+        Don't have an Aboslut account?
+        &nbsp;
+        <a href="#">Sign Up</a>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(".textbox input").focusout(function(){
+        if($(this).val() == ""){
+          $(this).siblings().removeClass("hidden");
+          $(this).css("background","#2e3260");
+        }else{
+          $(this).siblings().addClass("hidden");
+          $(this).css("background","#484848");
+        }
+      });
+
+      $(".textbox input").keyup(function(){
+        var inputs = $(".textbox input");
+        if(inputs[0].value != "" && inputs[1].value){
+          $(".login-btn").attr("disabled",false);
+          $(".login-btn").addClass("active");
+        }else{
+          $(".login-btn").attr("disabled",true);
+          $(".login-btn").removeClass("active");
+        }
+      });
+    </script>
+  </body>
+</html>
